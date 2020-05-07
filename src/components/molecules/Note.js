@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Button from 'components/atoms/Button';
 import Title from 'components/atoms/Title';
@@ -8,19 +9,23 @@ const StyledWrapper = styled.div`
   display: flex;
   flex-direction: column;
   width: 30%;
-  height: 300px;
 `;
 
-const Note = () => (
+const handleClick = () => {};
+
+const Note = ({ date, content }) => (
   <StyledWrapper>
-    <Title>29.10</Title>
-    <Paragraph>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam cumque incidunt eveniet a,
-      voluptatum mollitia qui maiores ducimus repellat ipsam rerum nostrum voluptates fugit magni,
-      nulla perspiciatis! Quod, repellendus natus.
-    </Paragraph>
-    <Button small>read more...</Button>
+    <Title onClick={handleClick}>{date}</Title>
+    <Paragraph>{content}</Paragraph>
+    <Button onClick={handleClick} small>
+      read more...
+    </Button>
   </StyledWrapper>
 );
+
+Note.propTypes = {
+  date: PropTypes.string.isRequired,
+  content: PropTypes.string.isRequired,
+};
 
 export default Note;
